@@ -1,18 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import ProductLi from "../ProductLi/ProductLi"
+import { mFetch } from '../../helpers/mFetch'
+import { useParams } from 'react-router-dom'
 
 const ProductLiCont = () => {
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const {cid} = useParams()
+
+
+  useEffect(()=>{
+    if(cid){
+      mFetch()
+      .then(result => setProducts(result.filter(product=> product.category === cid)))
+      .catch(error => console.log(error))
+      .finally(()=>setLoading(false))
+    }else{
+      mFetch()
+      .then(result => setProducts(result))
+      .catch(error => console.log(error))
+      .finally(()=>setLoading(false))
+    }
+  }, [cid])
+  // console.log(products)
+
+
   return (
-    <>
-      <article className='sect-pant'>
-        <div>
-          <h1>Pantalón Cargo</h1>
-          <img src="https://acdn.mitiendanube.com/stores/001/484/136/products/341-c5214ffc9d3e9820c416486777108141-640-0.jpg" alt="pantalon-cargo-negro" />
-          <p>Cargo Thor Negro</p>
-          <p className='precio'>$18500</p>
-          <button>añadir al carrito (funcion para después)</button>
-        </div>
-      </article>
-    </>
+    <div className='d-flex justify-content-center align-items-center'>
+      { loading ? <h1 className="d-flex justify-content-center">Cargado...</h1>
+        :
+        <ProductLi products={products}/>
+      }
+    </div>
     
   )
 }

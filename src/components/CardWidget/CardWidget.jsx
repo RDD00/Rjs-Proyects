@@ -1,9 +1,15 @@
-
+import { useState } from "react"
+import WidgetFunction from "../WidgetFunction/WidgetFunction"
 
 export const CardWidget = () => {
+
+  
+
+
+
   return (
     <div>
-        0 🛒
+        <p> {/* setWidgetCounter */} 3 🛒</p> 
     </div>
   )
 }
