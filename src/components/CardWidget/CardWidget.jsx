@@ -4,12 +4,12 @@ import WidgetFunction from "../WidgetFunction/WidgetFunction"
 export const CardWidget = () => {
 
   
-
+  
 
 
   return (
     <div>
-        <p> {/* setWidgetCounter */} 3 🛒</p> 
+        <p> 3 🛒</p> 
     </div>
   )
 }

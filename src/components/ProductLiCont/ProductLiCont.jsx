@@ -1,39 +1,60 @@
 import React, { useEffect, useState } from 'react'
 import ProductLi from "../ProductLi/ProductLi"
-import { mFetch } from '../../helpers/mFetch'
+import {collection, doc, getDoc, getDocs, getFirestore, query, where} from "firebase/firestore"
 import { useParams } from 'react-router-dom'
+import { Loading } from '../Loading/Loading'
 
 const ProductLiCont = () => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const {cid} = useParams()
-
-
+  
   useEffect(()=>{
-    if(cid){
-      mFetch()
-      .then(result => setProducts(result.filter(product=> product.category === cid)))
-      .catch(error => console.log(error))
-      .finally(()=>setLoading(false))
-    }else{
-      mFetch()
-      .then(result => setProducts(result))
-      .catch(error => console.log(error))
-      .finally(()=>setLoading(false))
-    }
+    // const dbFirestore = getFirestore() //traeme fireStore
+
+    //traer uno
+    // const queryDoc    = doc(dbFirestore, 'products', '7glLIkQcNYDx0DO0tdyv')
+    // getDoc(queryDoc) //promesa
+    // .then(response =>setProduct( {  id: response.id, ...response.data() } ))
+    // .catch(error => console.log(error))
+    // console.log(product)
+
+
+    //traer muchos
+    // const queryCollection = collection(dbFirestore, 'products')
+    
+    // getDocs(queryCollection)
+    // .then(resp => setProducts(resp.docs.map(products => ({id: products.id, ...products.data() }) )))
+    // .catch(error => console.log(error))
+    // .finally(()=>setLoading(false))
+
+    //filtrado
+    const dbFirestore = getFirestore() //traeme fireStore
+    const queryCollection = collection(dbFirestore, 'products')
+    
+    const queryFilter     = cid ? query(queryCollection, where('category', '==', cid)) : queryCollection
+
+    getDocs(queryFilter)
+    .then(resp => setProducts(resp.docs.map(product => ({id: product.id, ...product.data() }) )))
+    .catch(error => console.log(error))
+    .finally(()=>setLoading(false))
   }, [cid])
-  // console.log(products)
+
+  console.log(cid)
 
 
   return (
-    <div className='d-flex justify-content-center align-items-center'>
-      { loading ? <h1 className="d-flex justify-content-center">Cargado...</h1>
-        :
-        <ProductLi products={products}/>
+    <>
+      { loading ? 
+          
+          <Loading/>
+          :
+          <ProductLi products={products}/>
       }
-    </div>
+    </>
     
   )
 }
 
 export default ProductLiCont
+

@@ -2,17 +2,21 @@ import { useEffect, useState } from "react"
 import WidgetFunction from "../WidgetFunction/WidgetFunction"
 import { mFetch } from "../../helpers/mFetch"
 import { Link } from "react-router-dom"
+import { collection, getDocs, getFirestore } from "firebase/firestore"
 
 
 const ProductLi = () => {
 
   const [products, setProducts] = useState([])
 
-    useEffect(()=>{
-        mFetch()
-        .then(result => setProducts(result))
-        .catch(error => console.log(error))
-      }, [])
+  useEffect(()=>{
+    const dbFirestore = getFirestore()
+    const queryCollection = collection(dbFirestore, 'products')
+      
+    getDocs(queryCollection)
+    .then(resp => setProducts(resp.docs.map(products => ({id: products.id, ...products.data() }) )))
+    .catch(error => console.log(error))
+  },[])
 
   return (
     <>

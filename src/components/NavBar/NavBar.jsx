@@ -6,6 +6,11 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { CardWidget } from '../CardWidget/CardWidget'
 import { Link, NavLink } from 'react-router-dom';
 
+const categories = [
+  {id: '1', name: 'Pantalones', category: 'pantalones',},
+  {id: '2', name: 'Zapatillas', category: 'zapatillas',}
+]
+
 function NavBar() {
     return (
         
@@ -17,16 +22,29 @@ function NavBar() {
 
           <Nav className="me-auto">
             <NavLink className={({isActive})=> isActive ? 'btn btn-outline-primary' : 'btn'} to="/">Inicio</NavLink>
-            <NavLink className={({isActive})=> isActive ? 'btn btn-outline-primary' : 'btn'} to='/category/pantalones'>
+            {/* <NavLink className={({isActive})=> isActive ? 'btn btn-outline-primary' : 'btn'} to='/category/pantalones'>
                             Pantalones
             </NavLink>
             <NavLink className={({isActive})=> isActive ? 'btn btn-outline-primary' : 'btn'} to='/category/zapatillas'>
                             Zapatillas
-            </NavLink>
+            </NavLink> */}
+            {categories.map(category => 
+                <NavLink  key={category.id} 
+                          className={({isActive})=> isActive ? 'btn btn-outline-primary' : 'btn'} 
+                          to={`/category/${category.category}`}>
+
+                  {category.name}
+                  
+                </NavLink>)}
           </Nav>
 
           <Nav>
-            <CardWidget />
+            
+            <Link to='/cart'>
+              <CardWidget/>
+            </Link>
+              
+            
           </Nav>
 
         </Navbar.Collapse>
