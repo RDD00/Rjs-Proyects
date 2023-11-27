@@ -13,6 +13,7 @@ https://6563ce0dfaa03941aa46ee6e--fproyect-ecommerce.netlify.app/
 ## GitHub repo: 
 https://github.com/RDD00/Rjs-Proyects
 
+## Dependencias:
 | Plugin | README |
 | ------ | ------ |
 | bootstrap - 5.3.2 | Frame de estilos usado para app ecommerce en general |
