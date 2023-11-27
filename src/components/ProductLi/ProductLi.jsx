@@ -20,25 +20,30 @@ const ProductLi = () => {
 
   return (
     <>
-        {
-         products.map((product) =>  <div className="card w-25 m-3" key={product.id}> 
-                                      <img src={product.imageUrl} className="card-img-top"/>
-                                      <div className="card-body">
-                                        <h1>{product.name}</h1>
-                                        <p>Descripción: {product.description}</p>
-                                        <p>Precio: {product.price}</p>
+        <div className="d-flex flex-row flex-wrap justify-content-center">
+          {
+          products.map((product) =>       <div className="card m-3 w-25" key={product.id}> 
+                                            <img src={product.imageUrl} className="card-img-top"/>
+                                            <div className="card-body">
+                                              <h1>{product.name}</h1>
+                                              <p>Descripción: {product.description}</p>
+                                              <p>Precio: ${product.price}</p>
 
-                                        <div className="card-footer">
-                                          <Link to={`/detail/${product.id}`}>
-                                            <button className="btn btn-outline-primary w-100">Detalle</button>
-                                          </Link>
-                                          
-                                        </div>
+                                              <div className="card-footer">
+                                                <Link to={`/detail/${product.id}`}>
+                                                  <button className="btn btn-outline-primary w-100">Detalle</button>
+                                                </Link>
+                                                
+                                              </div>
+                                              
+                                            </div>
+                                          </div>
                                         
-                                      </div>
-                                    </div>
-              )
-        }
+                                      
+                )
+          }
+        
+        </div>  
         
     </>
   )

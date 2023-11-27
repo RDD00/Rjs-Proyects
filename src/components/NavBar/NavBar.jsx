@@ -7,8 +7,8 @@ import { CardWidget } from '../CardWidget/CardWidget'
 import { Link, NavLink } from 'react-router-dom';
 
 const categories = [
-  {id: '1', name: 'Pantalones', category: 'pantalones',},
-  {id: '2', name: 'Zapatillas', category: 'zapatillas',}
+  {id: '1', name: 'Pantalón', category: 'pantalones',},
+  {id: '2', name: 'Zapatilla', category: 'zapatillas',}
 ]
 
 function NavBar() {
@@ -22,19 +22,13 @@ function NavBar() {
 
           <Nav className="me-auto">
             <NavLink className={({isActive})=> isActive ? 'btn btn-outline-primary' : 'btn'} to="/">Inicio</NavLink>
-            {/* <NavLink className={({isActive})=> isActive ? 'btn btn-outline-primary' : 'btn'} to='/category/pantalones'>
-                            Pantalones
-            </NavLink>
-            <NavLink className={({isActive})=> isActive ? 'btn btn-outline-primary' : 'btn'} to='/category/zapatillas'>
-                            Zapatillas
-            </NavLink> */}
             {categories.map(category => 
                 <NavLink  key={category.id} 
                           className={({isActive})=> isActive ? 'btn btn-outline-primary' : 'btn'} 
                           to={`/category/${category.category}`}>
 
                   {category.name}
-                  
+
                 </NavLink>)}
           </Nav>
 

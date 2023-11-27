@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { mFetch } from "../../helpers/mFetch"
 import { ProductDetailCont } from "../ProductDetailCont/ProductDetailCont"
 
-export const Product = ({Product}) => {
+export const Product = ({product}) => {
     
   return (
     <div className="card w-25" key={product.id}> 
