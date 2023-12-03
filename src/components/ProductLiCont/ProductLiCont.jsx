@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import ProductLi from "../ProductLi/ProductLi"
 import {collection, getDocs, getFirestore, query, where} from "firebase/firestore"
+import ProductLi from "../ProductLi/ProductLi"
 import { useParams } from 'react-router-dom'
 import { Loading } from '../Loading/Loading'
 
@@ -14,15 +14,13 @@ const ProductLiCont = () => {
     const dbFirestore = getFirestore() //traeme fireStore
     const queryCollection = collection(dbFirestore, 'products')
     
-    const queryFilter     = cid ? query(queryCollection, where('category', "==", cid)) : queryCollection
+    const queryFilter     = cid ? query(queryCollection, where("category", "==", cid)) : queryCollection
 
     getDocs(queryFilter)
-    .then(resp => {setProducts(resp.docs.map(product => ({id: product.id, ...product.data() })))})
+    .then(resp => {setProducts( resp.docs.map( product => ({id: product.id, ...product.data()}) ))})
     .catch(error => console.log(error))
     .finally(()=>setLoading(false))
   }, [cid])
-  console.log(products)
-
 
   const handleAddProduct = () => {
     setProducts([

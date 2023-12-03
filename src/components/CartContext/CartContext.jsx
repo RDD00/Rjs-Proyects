@@ -19,12 +19,10 @@ export const CartContextProvider = ({children}) => {
         cartList[productIndex].cant += product.cant
         setCartList([...cartList])
       }
-      
-      console.log(productIndex)
     }
 
     const removePCart = (prodID) => {
-      setCartList((prevCartList) => prevCartList.filter((product => product.id !== product.id)))
+      setCartList((prevCartList) => prevCartList.filter(((product) => product.id !== prodID)))
     }
 
     const emptyCart = () => {setCartList([])}

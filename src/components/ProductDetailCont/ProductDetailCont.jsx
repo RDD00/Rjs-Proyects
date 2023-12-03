@@ -2,9 +2,11 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { ProductDetail } from "../ProductDetail/ProductDetail"
 import { doc, getDoc, getFirestore } from "firebase/firestore"
+import { Loading } from "../Loading/Loading"
 
 export const ProductDetailCont = () => {
     const [ product, setProduct ] = useState({})
+    const [loading, setLoading] = useState(true)
     const { pid } = useParams()
     
     useEffect(()=>{
@@ -15,7 +17,8 @@ export const ProductDetailCont = () => {
         getDoc(queryDoc) //promesa
         .then(response =>setProduct( {  id: response.id, ...response.data() } ))
         .catch(error => console.log(error))
-        // console.log(product)
+        .finally(()=>setLoading(false))
+
       }, [pid])
 
 
@@ -24,7 +27,12 @@ export const ProductDetailCont = () => {
 
     
     return (
-        <ProductDetail product={product}/>
+      <>
+      {loading ?
+        <Loading/>
+      :
+        <ProductDetail product={product}/>}
+      </>
   )
 }
 

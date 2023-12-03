@@ -22,13 +22,14 @@ function NavBar() {
 
           <Nav className="me-auto">
             <NavLink className={({isActive})=> isActive ? 'btn btn-outline-primary' : 'btn'} to="/">Inicio</NavLink>
+            
             {categories.map(category => 
                 <NavLink  key={category.id} 
                           className={({isActive})=> isActive ? 'btn btn-outline-primary' : 'btn'} 
                           to={`/category/${category.category}`}>
 
                   {category.name}
-
+                
                 </NavLink>)}
           </Nav>
 

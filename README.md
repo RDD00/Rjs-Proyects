@@ -32,3 +32,8 @@ https://github.com/RDD00/Rjs-Proyects
     messagingSenderId: "259340248180",
     appId: "1:259340248180:web:b7580ac4440c5fc574dd21"
 ```
+
+Para arreglar:
+    - categorías de los productos (por rutas)
+    - añadir productos
+    

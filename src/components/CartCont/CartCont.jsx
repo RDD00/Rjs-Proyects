@@ -68,14 +68,20 @@ export const CartCont = ({product}) => {
 
 
             <div>
-                { cartList.map((product) =>   <div key={product.id}>
-                                                <img src={product.imageUrl} alt={product.description}/>
-                                                <p>Nombre: {product.name}</p>
-                                                <p>Precio: ${product.price}</p>
-                                                <p>Cantidad: {product.cant}</p>
+                { cartList.map((product) => <div className="w-50 flex-row" key={product.id}>
+                                                <div className="w-50">
+                                                    <img src={product.imageUrl} alt={product.description}/>
+                                                <div/>
 
-                                                <button onClick={() => handleRemovePCart(product.id)}>X</button>
+                                                <div>
+                                                    <p>Nombre: {product.name}</p>
+                                                    <p>Precio: ${product.price}</p>
+                                                    <p>Cantidad: {product.cant}</p>
+                                                </div>
 
+                                                    <button onClick={() => handleRemovePCart(product.id)}>X</button>
+
+                                                </div>
                                             </div>)
 
                 }

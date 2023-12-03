@@ -8,12 +8,11 @@ export const ProductDetail = ({product}) => {
     const {addToCart} = useCartContext()
 
     const onAdd = cant => {
-        console.log('cantidad seleccionada', cant)
+        // console.log('cantidad seleccionada', cant)
         addToCart({...product, cant})
         setIsCount(false)
     }
-
-    // console.log(product)
+    
   return (
     <div className="row">
             <div className="col-6 mt-5">
@@ -29,8 +28,8 @@ export const ProductDetail = ({product}) => {
                             <ProductCounter initial={1} stock={5} onAdd={onAdd}/> 
                         : 
                             <>
-                                <Link className="btn btn-outline-dark " to='/cart'>Ir al cart</Link>
-                                <Link className="btn btn-outline-dark " to='/'>Ir al Home</Link>
+                                <Link className="btn btn-outline-dark m-3" to='/cart'>Ir al cart</Link>
+                                <Link className="btn btn-outline-dark " to='/'>Seguir Comprando</Link>
                             </>
                     }
             </div>            
