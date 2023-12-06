@@ -1,21 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 import NavBar from './components/NavBar/NavBar'
 import ProductLiCont from './components/ProductLiCont/ProductLiCont'
 import { ProductDetailCont } from './components/ProductDetailCont/ProductDetailCont'
 import { CartCont } from './components/CartCont/CartCont'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-
-// import './App.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { CartContextProvider } from './components/CartContext/CartContext'
 
-const onAdd = cant => {
-  console.log('cantidad seleccionada: ' + cant)
-}
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {

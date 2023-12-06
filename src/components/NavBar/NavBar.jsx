@@ -2,13 +2,12 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { CardWidget } from '../CardWidget/CardWidget'
 import { Link, NavLink } from 'react-router-dom';
 
-const categories = [
-  {id: '1', name: 'Pantalón', category: 'pantalones',},
-  {id: '2', name: 'Zapatilla', category: 'zapatillas',}
+const categorys = [
+  {id: '1', name: 'Pantalón', category: 'pantalones'},
+  {id: '2', name: 'Zapatilla', category: 'zapatillas'}
 ]
 
 function NavBar() {
@@ -23,7 +22,7 @@ function NavBar() {
           <Nav className="me-auto">
             <NavLink className={({isActive})=> isActive ? 'btn btn-outline-primary' : 'btn'} to="/">Inicio</NavLink>
             
-            {categories.map(category => 
+            {categorys.map(category => 
                 <NavLink  key={category.id} 
                           className={({isActive})=> isActive ? 'btn btn-outline-primary' : 'btn'} 
                           to={`/category/${category.category}`}>

@@ -1,11 +1,11 @@
-import { addDoc, collection, doc, getFirestore, updateDoc, writeBatch } from "firebase/firestore"
+import { addDoc, collection, getFirestore} from "firebase/firestore"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { useCartContext } from "../CartContext/CartContext"
+import { CartP } from "../CartP/CartP"
 
-export const CartCont = ({product}) => {
+export const CartCont = () => {
   
-    // const {cartList, vaciarCarrito] = useCartContext()
     const [isId, setIsId] = useState('')
 
     const [formData, setFormData] = useState({
@@ -14,7 +14,7 @@ export const CartCont = ({product}) => {
         email: ''
     })
 
-    const {cartList, emptyCart, totalPrice, removePCart} = useCartContext()
+    const {cartList, emptyCart, totalPrice} = useCartContext()
 
     const handleOrders = (evt) => {
 
@@ -52,9 +52,7 @@ export const CartCont = ({product}) => {
     }
 
 
-    const handleRemovePCart = (prodID) => {
-        removePCart(prodID)
-    }
+    
 
     return (
         <>
@@ -68,23 +66,10 @@ export const CartCont = ({product}) => {
 
 
             <div>
-                { cartList.map((product) => <div className="w-50 flex-row" key={product.id}>
-                                                <div className="w-50">
-                                                    <img src={product.imageUrl} alt={product.description}/>
-                                                <div/>
-
-                                                <div>
-                                                    <p>Nombre: {product.name}</p>
-                                                    <p>Precio: ${product.price}</p>
-                                                    <p>Cantidad: {product.cant}</p>
-                                                </div>
-
-                                                    <button onClick={() => handleRemovePCart(product.id)}>X</button>
-
-                                                </div>
-                                            </div>)
-
+                { 
+                    cartList.map((product) => <CartP key={product.id} product={product}/>)
                 }
+
                 {totalPrice() != 0 && <h3>Precio total: ${totalPrice()}</h3>}
                 <br />
 

@@ -8,17 +8,17 @@ export const ProductDetail = ({product}) => {
     const {addToCart} = useCartContext()
 
     const onAdd = cant => {
-        // console.log('cantidad seleccionada', cant)
         addToCart({...product, cant})
         setIsCount(false)
     }
-    
+
+    // console.log(product)
   return (
-    <div className="row">
-            <div className="col-6 mt-5">
-                <img src={product.imageUrl} alt={product.description} className="img-fluid"/>
+    <div className="d-flex row justify-content-center">
+            <div className="d-flex col-6 mt-5 justify-content-center">
+                <img src={product.imageUrl} alt={product.description} className="img-fluid "/>
             </div>
-            <div className="col-6 text-center mt-5">
+            <div className="col-4 text-center mt-5">
 
                 <p>Nombre: {product.name}</p>
                 <p>Categoría: {product.category}</p>
