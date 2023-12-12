@@ -8,7 +8,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ## Demo:
-https://6563ce0dfaa03941aa46ee6e--fproyect-ecommerce.netlify.app/
+https://6570c4707a114b08c40661be--fproyect-ecommerce.netlify.app/
 
 ## GitHub repo: 
 https://github.com/RDD00/Rjs-Proyects
